@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://mejorar-app.vercel.app/";
+const API_BASE_URL = process.env.BASE_URL || "https://mejorar-app.vercel.app/";
 
 export async function fetcher(api: RequestInfo, options: any) {
   const url = API_BASE_URL + api;

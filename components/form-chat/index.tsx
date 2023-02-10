@@ -1,13 +1,15 @@
-import { chatGPT } from "lib/hooks";
+import { chatGPT, pedidoState } from "lib/hooks";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 
 
 export function Chat(){
     const [respuesta, setRespuesta] = useState("")
+    const pedido = useRecoilValue(pedidoState)
     async function handleSubmit(e:any){
         e.preventDefault()
-        console.log(e.target.text.value);
-        const respuesta = await chatGPT(e.target.text.value)
+        const respuesta = await chatGPT(pedido)
+
         setRespuesta(respuesta) 
         
         
@@ -15,7 +17,7 @@ export function Chat(){
     }
     return <div>
         <form onSubmit={handleSubmit}>
-            <input type="text" name="text"/>
+            {/* <input type="text" name="text"/> */}
             <button>redactar</button>
         </form>
         <div>{respuesta}</div>

@@ -1,3 +1,5 @@
+import { atom } from "recoil";
+
 const API_BASE_URL = process.env.BASE_URL || "https://mejorar-app.vercel.app/";
 
 export async function fetcher(api: RequestInfo, options: any) {
@@ -29,7 +31,7 @@ export async function fetcher(api: RequestInfo, options: any) {
 }
 
 export async function chatGPT(message: string) {
-  const data = await fetcher("/api/ia", {
+  const data = await fetcher("api/ia", {
     method: "POST",
     body: { message },
   });
@@ -37,3 +39,8 @@ export async function chatGPT(message: string) {
 
   return JSON.stringify(data);
 }
+
+export const pedidoState = atom({
+  key: "textpedido",
+  default: "",
+});

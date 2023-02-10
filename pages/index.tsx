@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Chat } from 'components/form-chat'
+import { CaracteristicasForm } from 'components/form-caracteristicas'
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>hola soy el proyecto</div>
-      <Chat></Chat>
+      <CaracteristicasForm/>
+      {/* <Chat></Chat> */}
+      <button onClick={()=>{location.reload()}}>reset</button>
     </>
   )
 }
